@@ -10,7 +10,7 @@ sxhkd &
 ~/.fehbg
 
 # Start compositor
-picom --config ~/.config/picom/picom.conf &
+picom --config ~/.config/picom/picom.conf --experimental-backends &
 
 # Bar
 polybar default &
@@ -24,6 +24,9 @@ flameshot &
 # Password Manager
 keepassxc &
 
+# Dropbox for file syncing
+dropbox &
+
 # We need this for any AWT app to actually function
 wmname LG3D
 
@@ -36,6 +39,6 @@ bspc config gapless_monocle         true
 
 bspc config focus_follows_pointer   true
 
-bspc monitor -d term web ide 4 5 6
+bspc monitor -d     5 "/"
 
 bspc rule -a KeePassXC desktop=^6 follow=on

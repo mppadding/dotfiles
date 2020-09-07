@@ -2,6 +2,13 @@
 # wm independent hotkeys
 #
 
+# Backlight
+{XF86MonBrightnessDown, XF86MonBrightnessUp}
+    xbacklight -{dec,inc} 10
+
+{XF86AudioMute, XF86AudioLowerVolume, XF86AudioRaiseVolume}
+    pulsemixer --{toggle-mute,change-volume -5,change-volume +5}
+
 # terminal emulator
 super + Return
 	alacritty
