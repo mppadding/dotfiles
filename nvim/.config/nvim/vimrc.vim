@@ -143,6 +143,7 @@ endtry
 
 " Inputs the current date and time in insert mode
 iab xdate <C-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
+iab xtime <C-r>=strftime("%H:%M:%S")<cr>
 
 " ┌────────
 " │ [f] Plugins
@@ -196,6 +197,7 @@ source ~/.config/nvim/plugins.vim
 noremap <Leader>t :TagbarOpen fj<CR>
 
 " Tabbing In Visual
+" Indents a selected piece of text
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
@@ -203,12 +205,11 @@ vnoremap <S-Tab> <gv
 inoremap ;; <Esc>/<++><Enter>"_c4l
 
 " Line/block movement
+" A-j/A-k moves a line up/down.
+" A-j/A-k in visual moves the selected block up/down
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
 inoremap <A-j> <Esc>:m .+1<CR>==gi
 inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
-
-" Adds a new argument after the current argument.
-inoremap ;, <Esc>%%i, 

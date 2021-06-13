@@ -145,6 +145,7 @@ endfunction
 " │ [d] NERDTree
 " └────────
 
+" Map Space-F to open NERDTree
 nnoremap <Leader>f :NERDTree<CR>
 
 " Close nerdtree after opening a file
