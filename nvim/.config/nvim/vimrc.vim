@@ -43,10 +43,16 @@ au FocusGained,BufEnter * checktime
 " Mapping leader to <Space>
 let mapleader = "\<SPACE>"
 
+" Allow executing local rc files
+set exrc
+
+" Disallow :autocmd, shell and write commands in local rc files
+set secure
+
 " DISABLED: Due to not having an askpass helper or a tty with neovim
 " :W sudo-saves the file
 " Can be used in case of opening permission-denied files without sudo
-" command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
+"command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 
 " ┌────────
 " │ [b] Interface
@@ -165,7 +171,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ludovicchabant/vim-gutentags'
 
 " Tagbar
-Plug 'majutsushi/tagbar'
+Plug 'preservim/tagbar'
 
 " Rust
 Plug 'rust-lang/rust.vim'
@@ -175,6 +181,7 @@ Plug 'kshenoy/vim-signature'
 
 " Nerdtree file manager
 Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Denite
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -184,6 +191,11 @@ Plug 'maxbrunsfeld/vim-yankstack'
 
 " Snippets
 Plug 'honza/vim-snippets'
+
+" telescope.nvim is a highly extendable fuzzy finder over lists
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 call plug#end()
 
@@ -213,3 +225,5 @@ inoremap <A-j> <Esc>:m .+1<CR>==gi
 inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
+
+let g:NERDTreeGitStatusUseNerdFonts = 1

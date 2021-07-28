@@ -11,64 +11,24 @@
 " │
 " │ Sections:
 " │     ⇒ [a] COC
-" │     ⇒ [b] Tagbar
-" │     ⇒ [c] Denite
-" │     ⇒ [d] NERDTree
-" │     ⇒ [e] Snippets
+" │     ⇒ [b] Gutentags
+" │     ⇒ [c] Tagbar
+" │     ⇒ [d] Denite
+" │     ⇒ [e] NERDTree
+" │     ⇒ [f] Snippets
 " │
 " └────────
 
-" ┌────────
-" │ [a] COC
-" └────────
-" Extensions used:
-"   - coc-texlab        => LaTeX
-"   - coc-rls           => Rust
-"   - coc-python        => Python
-"   - coc-json          => JSON
-"   - coc-cmake         => CMake
-"   - coc-calc          => Calculations
-"   - coc-markdownlint  => Markdown Linting
-"   - coc-snippets      => Snippets
-
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap' to make sure tab is not mapped by other plugin.
-"inoremap <silent><expr> <TAB>
-"      \ pumvisible() ? "\<C-n>" :
-"      \ <SID>check_back_space() ? "\<TAB>" :
-"      \ coc#refresh()
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <C-Space> to trigger completion
-inoremap <silent><expr> <c-space> coc#refresh()
-let g:coc_snippet_next = '<tab>'
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" ┌────────
-" │ [b] Tagbar
-" └────────
-
-" Autoclose on selection
-let g:tagbar_autoclose = 1
+source ~/.config/nvim/plugins/coc.vim
+source ~/.config/nvim/plugins/gutentags.vim
+source ~/.config/nvim/plugins/nerdtree.vim
+source ~/.config/nvim/plugins/snippets.vim
+source ~/.config/nvim/plugins/tagbar.vim
 
 "" Rust:
 let g:rust_use_custom_ctags_defs = 1  " if using rust.vim
 let g:tagbar_type_rust = {
-  \ 'ctagsbin' : '/usr/bin/ctags',
+  \ 'ctagsbin' : '/var/lib/snapd/snap/bin/universal-ctags',
   \ 'ctagstype' : 'rust',
   \ 'kinds' : [
       \ 'n:modules',
@@ -102,7 +62,7 @@ let g:tagbar_type_rust = {
 \ }
 
 " ┌────────
-" │ [c] Denite
+" │ [d] Denite
 " └────────
 
 " Use ripgrep for searching current directory, list all files with --files and
@@ -140,24 +100,3 @@ function! s:denite_my_settings() abort
   nnoremap <silent><buffer><expr> <Space>
   \ denite#do_map('toggle_select').'j'
 endfunction
-
-" ┌────────
-" │ [d] NERDTree
-" └────────
-
-" Map Space-F to open NERDTree
-nnoremap <Leader>f :NERDTree<CR>
-
-" Close nerdtree after opening a file
-let NERDTreeQuitOnOpen = 1
-
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-
-" ┌────────
-" │ [e] Snippets
-" └────────
-
-let g:snips_author = 'Matthijs Padding'
-let g:coc_snippet_next = '<c-j>'
-let g:coc_snippet_prev = '<c-k>'
