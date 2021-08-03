@@ -24,132 +24,20 @@
 " │ [a] General
 " └────────
 
-" How many lines of history does VIM need to remember
-set history=500
 
-" More space for the command
-set cmdheight=2
+" Removed options, check if they are still useful
+" set path+=**
+" set ffs=unix,dos,mac
 
-" Less noticeable delay
-set updatetime=300
-
-" Filetype plugins
-filetype plugin indent on
+" Use lua for new options and remove options from this file
+" if theyre ported over.
+:lua require('modules/options')
 
 " Autoread when file is changed from outside
-set autoread
 au FocusGained,BufEnter * checktime
 
 " Mapping leader to <Space>
 let mapleader = "\<SPACE>"
-
-" Allow executing local rc files
-set exrc
-
-" Disallow :autocmd, shell and write commands in local rc files
-set secure
-
-" DISABLED: Due to not having an askpass helper or a tty with neovim
-" :W sudo-saves the file
-" Can be used in case of opening permission-denied files without sudo
-"command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
-
-" ┌────────
-" │ [b] Interface
-" └────────
-
-" Show matching brackets:
-set showmatch
-
-" Show (relative) line numbers:
-set number
-set rnu
-
-" Ignore case when searching
-set ignorecase
-
-" Do enable smartcase (when uppercase in search force case sensitive)
-set smartcase
-
-" Always include the global flag in searches/search-replaces
-set gdefault
-
-" Immediately go to next search upon typing
-set incsearch
-
-" Dont redraw on macros
-set lazyredraw
-
-" Search in all sub folders of working directory
-set path+=**
-
-" Display tab completion
-set wildmenu
-
-" Always show current position
-set ruler
-
-" Set command height to 1
-set cmdheight=1
-
-" Dont use vi :)
-set nocompatible
-
-" ┌────────
-" │ [c] Colors & Fonts
-" └────────
-
-" Display a soft-limit on 120 characters
-set colorcolumn=120
-
-" Enable syntax highlighting
-syntax enable
-
-" Color scheme
-set termguicolors
-colorscheme monokai
-
-" Always set encoding to UTF-8
-set encoding=utf8
-
-" Set unix as standard file type
-set ffs=unix,dos,mac
-
-" ┌────────
-" │ [d] Text, tabs and indent related
-" └────────
-
-" Use spaces instead of tabs
-set expandtab
-
-" 1 tab to 4 spaces
-set tabstop=4
-set shiftwidth=4
-set shiftround
-
-" Auto indent
-set ai
-
-" Smart indent
-set si
-
-" Wrap lines
-set wrap
-
-" Persistent undo means that you can undo after closing :)
-try
-    set undodir=~/.config/nvim/tmp/undodir
-    set undofile
-catch
-endtry
-
-" ┌────────
-" │ [e] Helper functions
-" └────────
-
-" Inputs the current date and time in insert mode
-iab xdate <C-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
-iab xtime <C-r>=strftime("%H:%M:%S")<cr>
 
 " ┌────────
 " │ [f] Plugins
