@@ -31,6 +31,12 @@ local plugins = {
     -- Colorscheme (Gruvbox)
     { "morhetz/gruvbox" },
 
+    { "neovim/nvim-lspconfig" },
+    { "nvim-lua/completion-nvim" },
+
+    { "ms-jpq/coq_nvim", branch = "coq" },
+    { "ms-jpq/coq.artifacts", branch = "artifacts" },
+
     -- Mapper for telescope
     { "lazytanuki/nvim-mapper",
         config = function()
@@ -61,9 +67,17 @@ local plugins = {
 }
 
 packer.startup(function(use)
-  for _, v in pairs(plugins) do
-    use(v)
-  end
+    for _, v in pairs(plugins) do
+        use(v)
+    end
 end)
 
 vim.g.mapper_search_path = vim.fn.stdpath('data')
+
+vim.schedule(function ()
+    local lsp = require "lspconfig"
+    require("packer").loader("coq_nvim coq.artifacts")
+    lsp.pyright.setup(require("coq")().lsp_ensure_capabilities({
+              on_attach = on_attach_callback,
+    }))
+end)
