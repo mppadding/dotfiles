@@ -56,7 +56,6 @@ map_telescope({
         desc        = "Edit NeoVim dotfiles",
     },
 })
--- map_tele("<leader>ez")
 
 -- Builtin's
 map_telescope({

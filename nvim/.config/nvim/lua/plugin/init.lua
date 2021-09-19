@@ -25,16 +25,13 @@ local plugins = {
     -- Let packer maange itself 
     { "wbthomason/packer.nvim", opt = true },
 
-    -- Colorscheme (Monokai)
-    { "tanvirtin/monokai.nvim" },
-
     -- Colorscheme (Gruvbox)
     { "morhetz/gruvbox" },
 
     { "neovim/nvim-lspconfig" },
     { "nvim-lua/completion-nvim" },
 
-    { "ms-jpq/coq_nvim", branch = "coq" },
+    { "ms-jpq/coq_nvim", branch = "coq", run = ":COQdeps" },
     { "ms-jpq/coq.artifacts", branch = "artifacts" },
 
     -- Mapper for telescope

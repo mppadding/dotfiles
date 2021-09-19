@@ -37,6 +37,3 @@ o.termguicolors 	= true 		-- Use TrueColors
 
 -- TODO: Change these to lua if possible
 vim.cmd('set colorcolumn=120') 		-- Set color highlight on column 120
-
---require('monokai')
---vim.cmd('colorscheme monokai') 		-- Use monokai colorscheme

@@ -1,3 +1,18 @@
+-- NVim Dotfiles
+--  Author:         Matthijs Padding <@mppadding>
+--  Description:    NeoVim dotfiles based on Lua plugins
+--                  These are my personal dotfiles currently in use while working/studying.
+--                  
+--                  The current theme in use is gruvbox combined with TreeSitter for better syntax highlighting
+--                  Plugins used:
+--                      -   Packer          Plugin Manager
+--                      -   Gruvbox         Theme
+--                      -   NVim-lsp        Language Server Protocol
+--                      -   COQ             NVim Completion
+--                      -   Telescope       Extendable Fuzzy Finder over lists
+--                      -   NVim-mapper     Telescope mappings list provider
+--                      -   TreeSitter      Better syntax highlighting and powerful refactor tool
+
 -- Map leader to SPACE, this needs to be done before any other mapping.
 vim.g.mapleader = " "
 
@@ -19,20 +34,15 @@ require('plugin/telescope')
 require('plugin/telescope/mappings')
 
 -- Treesitter
+require('plugin/tree-sitter')
 require('plugin/tree-sitter/test')
+
+-- Refactoring
+require('refactor/test')
 
 vim.g.gruvbox_contrast_dark = 'hard'
 
 vim.cmd('colorscheme gruvbox')
-
--- vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
--- vim.lsp.handlers['textDocument/references'] = require'lsputil.locations'.references_handler
--- vim.lsp.handlers['textDocument/definition'] = require'lsputil.locations'.definition_handler
--- vim.lsp.handlers['textDocument/declaration'] = require'lsputil.locations'.declaration_handler
--- vim.lsp.handlers['textDocument/typeDefinition'] = require'lsputil.locations'.typeDefinition_handler
--- vim.lsp.handlers['textDocument/implementation'] = require'lsputil.locations'.implementation_handler
--- vim.lsp.handlers['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
--- vim.lsp.handlers['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
 
 -- TODO: Move to own config file
 require('lspconfig').cmake.setup{ on_attach=require('completion').on_attach }

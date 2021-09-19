@@ -7,7 +7,7 @@ local register_lsp = function(server, settings)
 
     if settings ~= nil then
         for key,val in pairs(settings) do
-            lsp_settings[key] = value
+            lsp_settings[key] = val
         end
     end
 
@@ -19,7 +19,7 @@ vim.schedule(function()
     require("packer").loader("coq_nvim coq.artifacts")
 
     -- Start COQnow
-    require("coq")().COQnow("-s")
+    require("coq")().Now("-s")
 
     -- Python
     register_lsp(lsp.pyright)
@@ -36,6 +36,10 @@ vim.schedule(function()
     -- LaTeX
     register_lsp(lsp.texlab)
 
+    -- Lua
+    register_lsp(lsp.sumneko_lua, require("plugin.lsp.lua_config"))
+
+    -- TODO:    This currently results in E32: No file name if
+    --          NVim is run without a filename (such as $ nvim)
     vim.cmd('e')
 end)
-

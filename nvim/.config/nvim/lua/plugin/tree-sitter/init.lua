@@ -3,7 +3,7 @@ if not pcall(require, "nvim-treesitter") then
     return
 end
 
-require("nvim-treesitter/configs").setup {
+require("nvim-treesitter.configs").setup {
     ensure_installed = {"c", "cmake", "cpp", "latex", "lua", "python", "query", "rust"},
 
     -- Hightlighting Module
