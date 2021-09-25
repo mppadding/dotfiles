@@ -45,4 +45,4 @@ vim.g.gruvbox_contrast_dark = 'hard'
 vim.cmd('colorscheme gruvbox')
 
 -- TODO: Move to own config file
-require('lspconfig').cmake.setup{ on_attach=require('completion').on_attach }
+--require('lspconfig').cmake.setup{ on_attach=require('completion').on_attach }

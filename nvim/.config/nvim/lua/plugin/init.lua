@@ -29,7 +29,6 @@ local plugins = {
     { "morhetz/gruvbox" },
 
     { "neovim/nvim-lspconfig" },
-    { "nvim-lua/completion-nvim" },
 
     { "ms-jpq/coq_nvim", branch = "coq", run = ":COQdeps" },
     { "ms-jpq/coq.artifacts", branch = "artifacts" },
@@ -61,6 +60,11 @@ local plugins = {
         run = ":TSUpdate"
     },
     { "nvim-treesitter/playground" },
+
+    -- Better git commits :)
+    { "rhysd/committia.vim" },
+
+    -- use "sindrets/diffview.nvim"
 }
 
 packer.startup(function(use)
