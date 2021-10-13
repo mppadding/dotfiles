@@ -64,6 +64,9 @@ local plugins = {
     -- Better git commits :)
     { "rhysd/committia.vim" },
 
+    -- Scratch pad for writing Lua plugins
+    { "rafcamlet/nvim-luapad" },
+
     -- use "sindrets/diffview.nvim"
 }
 

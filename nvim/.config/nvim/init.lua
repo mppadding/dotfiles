@@ -2,7 +2,7 @@
 --  Author:         Matthijs Padding <@mppadding>
 --  Description:    NeoVim dotfiles based on Lua plugins
 --                  These are my personal dotfiles currently in use while working/studying.
---                  
+--
 --                  The current theme in use is gruvbox combined with TreeSitter for better syntax highlighting
 --                  Plugins used:
 --                      -   Packer          Plugin Manager
@@ -36,6 +36,9 @@ require('plugin/telescope/mappings')
 -- Treesitter
 require('plugin/tree-sitter')
 require('plugin/tree-sitter/test')
+
+-- Luapad
+require('plugin/luapad')
 
 -- Refactoring
 require('refactor/test')

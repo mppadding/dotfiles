@@ -7,6 +7,7 @@ end
 TelescopeMapArgs = TelescopeMapArgs or {}
 
 local Mapper = require("nvim-mapper")
+local keybinds = require('modules/keybinds')
 
 -- Function to map a telescope command to a key
 -- Uses the Mapper from nvim-mapper to do the mapping (to provide entries in :Telescope mapper)
@@ -17,11 +18,15 @@ local Mapper = require("nvim-mapper")
 --          - id        unique id (usually command)
 --          - category  Telescope
 --          - desc      Description
-map_telescope = function(mapping)
+map_telescope = function(mapping, virtual)
+    mapping.command = mapping.command or mapping.help.id
     local map_key = vim.api.nvim_replace_termcodes(mapping.key .. mapping.command, true, true, true)
 
-
     TelescopeMapArgs[map_key] = mapping.options or {}
+
+    if virtual == nil then
+        virtual = false
+    end
 
     local mode = "n"
     local cmd = string.format("<cmd>lua R('plugin/telescope')['%s'](TelescopeMapArgs['%s'])<CR>", mapping.command, map_key)
@@ -37,12 +42,10 @@ map_telescope = function(mapping)
         desc        = mapping.help.desc or "No description provided.",
     }
 
-    if mapping.buffer then
-        --vim.api.nvim_set_keymap(mode, key, rhs, map_options)
+    if not virtual then
         Mapper.map(mode, mapping.key, cmd, map_options, help.category, help.id, help.desc)
     else
-        --vim.api.nvim_buf_set_keymap(0, mode, key, rhs, map_options)
-        Mapper.map_buf(0, mode, mapping.key, cmd, map_options, help.category, help.id, help.desc)
+        Mapper.map_virtual(mode, mapping.key, "", map_options, help.category, help.id, help.desc)
     end
 end
 
@@ -126,3 +129,83 @@ map_telescope({
         desc        = "List of all git branches in project",
     },
 })
+
+-- LSP Jumping (Virtual)
+map_telescope({
+    key     = keybinds.lsp.goto_declaration,
+    help    = {
+        id          = "lsp_goto_declaration",
+        category    = "LSP",
+        desc        = "Go to declaration",
+    },
+}, true)
+map_telescope({
+    key     = keybinds.lsp.goto_definition,
+    help    = {
+        id          = "lsp_goto_definition",
+        category    = "LSP",
+        desc        = "Go to definition",
+    },
+}, true)
+map_telescope({
+    key     = keybinds.lsp.goto_references,
+    help    = {
+        id          = "lsp_goto_references",
+        category    = "LSP",
+        desc        = "List all usages of identifier",
+    },
+}, true)
+
+-- LSP Information (Virtual)
+map_telescope({
+    key     = keybinds.lsp.hover,
+    help    = {
+        id          = "lsp_hover",
+        category    = "LSP",
+        desc        = "Show description of hovered identifier",
+    },
+}, true)
+
+-- LSP Diagnostics (Virtual)
+map_telescope({
+    key     = keybinds.lsp.diagnostics_line,
+    help    = {
+        id          = "lsp_diag_line",
+        category    = "LSP",
+        desc        = "Show all diagnostics of current line in popup",
+    },
+}, true)
+map_telescope({
+    key     = keybinds.lsp.diagnostics_prev,
+    help    = {
+        id          = "lsp_diag_prev",
+        category    = "LSP",
+        desc        = "Go to previous diagnostic in file",
+    },
+}, true)
+map_telescope({
+    key     = keybinds.lsp.diagnostics_next,
+    help    = {
+        id          = "lsp_diag_next",
+        category    = "LSP",
+        desc        = "Go to next diagnostic in file",
+    },
+}, true)
+
+-- LSP Code Actions (Virtual)
+map_telescope({
+    key     = keybinds.lsp.action_code,
+    help    = {
+        id          = "lsp_action_code",
+        category    = "LSP",
+        desc        = "Show a list of code action for the current identifier/line",
+    },
+}, true)
+map_telescope({
+    key     = keybinds.lsp.action_rename,
+    help    = {
+        id          = "lsp_action_rename",
+        category    = "LSP",
+        desc        = "Renames an identifier",
+    },
+}, true)

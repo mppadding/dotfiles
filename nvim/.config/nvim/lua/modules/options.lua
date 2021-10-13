@@ -35,5 +35,9 @@ o.undofile 		    = true 		-- Make undo persistent
 -- Colorscheme
 o.termguicolors 	= true 		-- Use TrueColors
 
+-- Folding
+vim.cmd('set foldmethod=expr')
+vim.cmd('set foldexpr=nvim_treesitter#foldexpr()')
+
 -- TODO: Change these to lua if possible
 vim.cmd('set colorcolumn=120') 		-- Set color highlight on column 120
