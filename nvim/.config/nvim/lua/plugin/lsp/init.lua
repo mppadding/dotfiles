@@ -2,7 +2,6 @@ local keybinds = require('modules/keybinds')
 
 local on_attach_callback = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
   -- Mappings.
   local opts = { noremap=true, silent=true }
@@ -11,7 +10,8 @@ local on_attach_callback = function(client, bufnr)
   -- Jumping
   buf_set_keymap('n', keybinds.lsp.goto_declaration, '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', keybinds.lsp.goto_definition, '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', keybinds.lsp.goto_references, '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  -- Handled by Telescope
+  -- buf_set_keymap('n', keybinds.lsp.goto_references, '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 
   -- Information
   buf_set_keymap('n', keybinds.lsp.hover, '<cmd>lua vim.lsp.buf.hover()<CR>', opts)

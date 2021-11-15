@@ -22,7 +22,7 @@ end
 vim.cmd([[autocmd BufWritePost plugin/init.lua source <afile> | PackerCompile]])
 
 local plugins = {
-    -- Let packer maange itself 
+    -- Let packer maange itself
     { "wbthomason/packer.nvim", opt = true },
 
     -- Colorscheme (Gruvbox)
@@ -39,7 +39,7 @@ local plugins = {
             require("nvim-mapper").setup{
                 no_map = true,
                 search_path = vim.fn.stdpath('data'),
-            } 
+            }
         end,
         before = "telescope.nvim",
     },
@@ -61,13 +61,19 @@ local plugins = {
     },
     { "nvim-treesitter/playground" },
 
-    -- Better git commits :)
-    { "rhysd/committia.vim" },
-
     -- Scratch pad for writing Lua plugins
     { "rafcamlet/nvim-luapad" },
 
-    -- use "sindrets/diffview.nvim"
+    ----
+    -- Debug section:
+    ----
+    { "mfussenegger/nvim-dap" },
+
+    ----
+    -- Git:
+    ----
+    -- Better git commits :)
+    { "rhysd/committia.vim" },
 }
 
 packer.startup(function(use)
@@ -77,11 +83,3 @@ packer.startup(function(use)
 end)
 
 vim.g.mapper_search_path = vim.fn.stdpath('data')
-
-vim.schedule(function ()
-    local lsp = require "lspconfig"
-    require("packer").loader("coq_nvim coq.artifacts")
-    lsp.pyright.setup(require("coq")().lsp_ensure_capabilities({
-              on_attach = on_attach_callback,
-    }))
-end)
