@@ -16,6 +16,7 @@
 -- Map leader to SPACE, this needs to be done before any other mapping.
 vim.g.mapleader = " "
 
+-- We add the theme here, otherwise other plugins won't follow it
 vim.g.gruvbox_contrast_dark = 'hard'
 
 vim.cmd('colorscheme gruvbox')

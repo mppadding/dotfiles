@@ -51,7 +51,7 @@ end
 
 -- Dotfiles
 map_telescope({
-    key     = "<leader>en",
+    key     = keybinds.telescope.custom.edit_neovim,
     command = "edit_neovim",
     help    = {
         id          = "edit_neovim",
@@ -62,7 +62,7 @@ map_telescope({
 
 -- Builtin's
 map_telescope({
-    key     = "<leader>ff",
+    key     = keybinds.telescope.builtin.find_files,
     command = "find_files",
     help    = {
         id          = "find_files",
@@ -71,19 +71,20 @@ map_telescope({
     },
 })
 
-map_telescope({
-    key     = "<leader>fb",
-    command = "file_browser",
-    help    = {
-        id          = "file_browser",
-        category    = "Telescope",
-        desc        = "File browser in current working directory",
-    },
-})
+-- File browser is going to be removed from base telescope mid december
+--map_telescope({
+--    key     = "<leader>fb",
+--    command = "file_browser",
+--    help    = {
+--        id          = "file_browser",
+--        category    = "Telescope",
+--        desc        = "File browser in current working directory",
+--    },
+--})
 
 -- Grep
 map_telescope({
-    key     = "<leader>gg",
+    key     = keybinds.telescope.grep.live,
     command = "live_grep",
     help    = {
         id          = "live_grep",
@@ -92,7 +93,7 @@ map_telescope({
     }
 })
 map_telescope({
-    key     = "<leader>gs",
+    key     = keybinds.telescope.grep.string,
     command = "grep_string",
     help    = {
         id          = "grep_string",
@@ -103,7 +104,7 @@ map_telescope({
 
 -- Git
 map_telescope({
-    key     = "<leader>Gc",
+    key     = keybinds.telescope.git.commits,
     command = "git_commits",
     help    = {
         id          = "git_commits",
@@ -112,7 +113,7 @@ map_telescope({
     },
 })
 map_telescope({
-    key     = "<leader>Gs",
+    key     = keybinds.telescope.git.status,
     command = "git_status",
     help    = {
         id          = "git_status",
@@ -121,7 +122,7 @@ map_telescope({
     },
 })
 map_telescope({
-    key     = "<leader>Gb",
+    key     = keybinds.telescope.git.branches,
     command = "git_branches",
     help    = {
         id          = "git_branches",

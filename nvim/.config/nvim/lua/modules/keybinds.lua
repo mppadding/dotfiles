@@ -1,4 +1,21 @@
 return {
+    telescope = {
+        builtin = {
+            find_files = "<leader>ff",
+        },
+        git = {
+            branches    = "<leader>Gb",
+            commits     = "<leader>Gc",
+            status      = "<leader>Gs",
+        },
+        grep = {
+            live        = "<leader>gg",
+            string      = "<leader>gs",
+        },
+        custom = {
+            edit_neovim = "<leader>en",
+        },
+    },
     lsp = {
         goto_declaration    = 'gD',
         goto_definition     = 'gd',
@@ -10,5 +27,10 @@ return {
         diagnostics_list    = '<leader>dl',
         action_code         = '<leader>C',
         action_rename       = '<leader>cr',
-    }
+    },
+    copy_paste = {
+        visual_system_yank_line     = '<leader>y',
+        system_yank_line            = '<leader>yy',
+        system_paste                = '<leader>p',
+    },
 }
