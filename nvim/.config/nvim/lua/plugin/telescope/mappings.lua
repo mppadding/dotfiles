@@ -147,14 +147,6 @@ map_telescope({
         desc        = "Go to definition",
     },
 }, true)
---map_telescope({
---    key     = keybinds.lsp.goto_references,
---    help    = {
---        id          = "lsp_goto_references",
---        category    = "LSP",
---        desc        = "List all usages of identifier",
---    },
---}, true)
 
 -- LSP Jumping
 map_telescope({
@@ -166,7 +158,6 @@ map_telescope({
         desc        = "List all usages of identifier",
     },
 })
-
 
 -- LSP Information (Virtual)
 map_telescope({

@@ -65,32 +65,26 @@ local register_lsp = function(server, settings)
     server.setup(lsp_settings)
 end
 
-vim.schedule(function()
-    local lsp = require "lspconfig"
-    require("packer").loader("coq_nvim coq.artifacts")
+local lsp = require "lspconfig"
+local coq = require "coq"
 
-    -- Start COQnow
-    require("coq")().Now("-s")
+-- Python
+register_lsp(lsp.pyright)
 
-    -- Python
-    register_lsp(lsp.pyright)
+-- CMake
+register_lsp(lsp.cmake)
 
-    -- CMake
-    register_lsp(lsp.cmake)
+-- Rust
+register_lsp(lsp.rust_analyzer)
 
-    -- C/C++ with clang
-    register_lsp(lsp.clangd)
+-- LaTeX
+register_lsp(lsp.texlab)
 
-    -- Rust
-    register_lsp(lsp.rust_analyzer)
+-- Lua
+register_lsp(lsp.sumneko_lua, require("plugin.lsp.lua_config"))
 
-    -- LaTeX
-    register_lsp(lsp.texlab)
+-- C/C++ with clang
+register_lsp(lsp.clangd)
 
-    -- Lua
-    register_lsp(lsp.sumneko_lua, require("plugin.lsp.lua_config"))
-
-    -- TODO:    This currently results in E32: No file name if
-    --          NVim is run without a filename (such as $ nvim)
-    vim.cmd('e')
-end)
+-- Start COQnow
+coq().Now("-s")
