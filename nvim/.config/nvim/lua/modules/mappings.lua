@@ -13,3 +13,4 @@ local visual = 'v'
 map(visual, keybinds.copy_paste.visual_system_yank_line,  '"+y',  { noremap = true, silent = true })
 map(normal, keybinds.copy_paste.system_yank_line, '"+yy', { noremap = true, silent = true })
 map(normal, keybinds.copy_paste.system_paste,  '"+p',  { noremap = true, silent = true })
+--map(normal, keybinds.lsp.source_header_swap, ":ClangdSwitchSourceHeader", { noremap = true, silent = true })

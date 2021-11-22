@@ -213,3 +213,13 @@ map_telescope({
         desc        = "Renames an identifier",
     },
 }, true)
+
+-- LSP Clangd
+--map_telescope({
+--    key     = keybinds.lsp.source_header_swap,
+--    help    = {
+--        id          = "lsp_source_header_swap",
+--        category    = "LSP",
+--        desc        = "Swaps between source and header file",
+--    },
+--}, true)

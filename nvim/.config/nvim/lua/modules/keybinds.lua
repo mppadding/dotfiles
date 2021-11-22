@@ -27,6 +27,7 @@ return {
         diagnostics_list    = '<leader>dl',
         action_code         = '<leader>C',
         action_rename       = '<leader>cr',
+        source_header_swap  = '<A-5>',
     },
     copy_paste = {
         visual_system_yank_line     = '<leader>y',

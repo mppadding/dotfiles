@@ -10,8 +10,8 @@ o.wrap 			    = false		-- Dont wrap long lines around
 
 -- Tabs/spacing
 o.expandtab 		= true 		-- Use spaces instead of tabs
-o.tabstop 		    = 4		-- Show tabs as 4 spaces
-o.shiftwidth 		= 4		-- Insert 4 spaces instead of a tab
+o.tabstop 		    = 4		    -- Show tabs as 4 spaces
+o.shiftwidth 		= 4		    -- Insert 4 spaces instead of a tab
 o.shiftround 		= true 		-- Round shifts with >/< to multiples of shiftwidth
 
 o.smartindent 		= true 		-- Smart identation based on language
