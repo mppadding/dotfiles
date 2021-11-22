@@ -34,4 +34,7 @@ return {
         system_yank_line            = '<leader>yy',
         system_paste                = '<leader>p',
     },
+    movement = {
+        function_header = '<leader>mfh', -- Move Function Header, Currently unimplemented
+    },
 }
