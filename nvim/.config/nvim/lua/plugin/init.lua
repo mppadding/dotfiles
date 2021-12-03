@@ -74,6 +74,7 @@ local plugins = {
     ----
     -- Better git commits :)
     { "rhysd/committia.vim" },
+    { "glepnir/dashboard-nvim" },
 }
 
 packer.startup(function(use)

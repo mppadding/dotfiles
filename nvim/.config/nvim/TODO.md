@@ -23,3 +23,6 @@ List of search results
 
 # Folding
 Disable folding all for input files that are shorter than the buffer.
+
+# Dashboard
+Remove rendering of nezuko when new file is opened

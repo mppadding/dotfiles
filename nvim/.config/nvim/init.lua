@@ -48,6 +48,8 @@ require('plugin/luapad')
 -- Refactoring
 require('refactor/test')
 
+require("themes/dashboard")
+
 --local dap = require('dap')
 --dap.adapters.lldb = {
 --    type = 'executable',
