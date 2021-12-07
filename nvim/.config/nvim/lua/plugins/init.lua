@@ -16,12 +16,23 @@ vim.cmd([[
 
 return packer.startup(function()
     use({
+        "wbthomason/packer.nvim",
+        event = "VimEnter",
+    })
+
+    --[[
+        Libraries
+    --]]
+    use({
         "nvim-lua/plenary.nvim",
     })
 
+    --[[
+        UI
+    --]]
     use({
-        "wbthomason/packer.nvim",
-        event = "VimEnter",
+        "kyazdani42/nvim-web-devicons",
+        config = "require('plugins.configs.icons')",
     })
 
     use({
@@ -36,13 +47,60 @@ return packer.startup(function()
     })
 
     use({
-        "kyazdani42/nvim-web-devicons",
-        config = "require('plugins.configs.icons')",
-    })
-
-    use({
         "famiu/feline.nvim",
         after = "nvim-web-devicons",
         config = "require('plugins.configs.feline')",
+    })
+
+    use({
+        "glepnir/dashboard-nvim",
+        config = "require('plugins.configs.dashboard')",
+    })
+
+    --[[
+        LSP
+    --]]
+    use({
+        "neovim/nvim-lspconfig",
+    })
+    use({
+        "ms-jpq/coq_nvim",
+        after = "nvim-lspconfig",
+        branch = "coq",
+        run = ":COQdeps",
+        config = "require('lsp')",
+    })
+    use({
+        "ms-jpq/coq.artifacts",
+        branch = "artifacts",
+    })
+
+    --[[
+        Telescope
+    --]]
+    use({
+        "nvim-telescope/telescope.nvim",
+        requires = {
+            {
+                "nvim-telescope/telescope-fzf-native.nvim",
+                run = "make",
+            },
+            {
+                "nvim-telescope/telescope-media-files.nvim",
+            },
+        },
+    })
+
+    --[[
+        Treesitter
+    --]]
+    use({
+        "nvim-treesitter/nvim-treesitter",
+        run = ":TSUpdate",
+    })
+    use({
+        "nvim-treesitter/playground",
+        after = "nvim-treesitter",
+        config = "require('plugins.configs.treesitter')",
     })
 end)
