@@ -1,6 +1,19 @@
 local M = {}
 
-M.telescope = function()
+M.telescope = function(bufnr)
+    local function set_keymap(...)
+        vim.api.nvim_set_keymap(...)
+    end
+
+    local opts = { noremap = true, silent = true }
+
+    -- Grep
+    set_keymap("n", "<leader>gg", "<cmd>Telescope live_grep<CR>", opts)
+    set_keymap("n", "<leader>gs", "<cmd>Telescope grep_string<CR>", opts)
+
+    -- LSP
+    set_keymap("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
+
     --[[
         builtin = {
             find_files = "<leader>ff",

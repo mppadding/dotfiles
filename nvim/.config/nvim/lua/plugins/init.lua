@@ -40,10 +40,7 @@ return packer.startup(function()
         requires = {
             "rktjmp/lush.nvim",
         },
-        config = function()
-            vim.g.gruvbox_contrast_dark = "hard"
-            vim.cmd("colorscheme gruvbox")
-        end,
+        config = "require('plugins.configs.gruvbox')"
     })
 
     use({
@@ -80,6 +77,7 @@ return packer.startup(function()
     --]]
     use({
         "nvim-telescope/telescope.nvim",
+        cmd = "Telescope",
         requires = {
             {
                 "nvim-telescope/telescope-fzf-native.nvim",
@@ -97,10 +95,10 @@ return packer.startup(function()
     use({
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate",
+        config = "require('plugins.configs.treesitter')",
     })
     use({
         "nvim-treesitter/playground",
-        after = "nvim-treesitter",
-        config = "require('plugins.configs.treesitter')",
+        cmd = "TSPlaygroundToggle",
     })
 end)
