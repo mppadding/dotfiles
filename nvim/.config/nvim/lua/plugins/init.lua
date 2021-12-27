@@ -101,4 +101,8 @@ return packer.startup(function()
         "nvim-treesitter/playground",
         cmd = "TSPlaygroundToggle",
     })
+
+    use({
+        "rhysd/committia.vim"
+    })
 end)
