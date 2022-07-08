@@ -37,9 +37,10 @@ return packer.startup(function()
 
     use({
         "ellisonleao/gruvbox.nvim",
-        requires = {
+        --[[requires = {
             "rktjmp/lush.nvim",
         },
+        --]]
         config = "require('plugins.configs.gruvbox')"
     })
 
@@ -59,6 +60,9 @@ return packer.startup(function()
     --]]
     use({
         "neovim/nvim-lspconfig",
+    })
+    use({
+        "jose-elias-alvarez/null-ls.nvim",
     })
     use({
         "ms-jpq/coq_nvim",
@@ -89,6 +93,14 @@ return packer.startup(function()
         },
     })
 
+    --[[ Disabled, alacritty does not support uberzug (and uberzug does not support Wayland)
+    use({
+        "nvim-telescope/telescope-media-files.nvim",
+        after = "telescope.nvim",
+        config = "require('telescope').load_extension('media_files')"
+    })
+    --]]
+
     --[[
         Treesitter
     --]]
@@ -100,6 +112,9 @@ return packer.startup(function()
     use({
         "nvim-treesitter/playground",
         cmd = "TSPlaygroundToggle",
+    })
+    use({
+        "ziontee113/syntax-tree-surfer"
     })
 
     use({

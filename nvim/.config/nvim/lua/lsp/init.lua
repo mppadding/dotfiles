@@ -24,6 +24,12 @@ end
 
 local lsp = require("lspconfig")
 
+require("null-ls").setup({
+    sources = {
+        require("null-ls").builtins.diagnostics.vale,
+    },
+})
+
 -- Python
 register_lsp(lsp.pyright)
 
@@ -44,3 +50,4 @@ register_lsp(lsp.clangd)
 
 -- Start COQnow
 require("coq")().Now("-s")
+require("lsp.icons")
