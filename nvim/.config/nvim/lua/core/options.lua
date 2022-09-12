@@ -31,6 +31,7 @@ o.updatetime = 300 -- Remove noticable delay
 o.undofile = true -- Make undo persistent
 
 -- Colorscheme
-o.termguicolors = true -- Use TrueColors
+o.termguicolors = true  -- Use TrueColors
+o.cursorline = true     -- Highlight current line
 
 --vim.cmd('set colorcolumn=120') 		-- Set color highlight on column 120

@@ -37,11 +37,12 @@ return packer.startup(function()
 
     use({
         "ellisonleao/gruvbox.nvim",
-        --[[requires = {
-            "rktjmp/lush.nvim",
-        },
-        --]]
         config = "require('plugins.configs.gruvbox')"
+    })
+
+    use({
+        "EdenEast/nightfox.nvim",
+        config = "require('plugins.configs.nightfox')"
     })
 
     use({
