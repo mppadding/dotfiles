@@ -127,4 +127,18 @@ return packer.startup(function()
         after = "nvim-web-devicons",
         config = "require('plugins.configs.bufferline')",
     })
+    use({
+        'mfussenegger/nvim-dap',
+        config = "require('plugins.configs.dap')",
+    })
+    use({
+        'rcarriga/nvim-dap-ui',
+        requires = {'mfussenegger/nvim-dap'},
+        config = "require('plugins.configs.dapui')"
+    })
+    use({
+        'theHamsta/nvim-dap-virtual-text',
+        config = "require('plugins.configs.dap_virtual')",
+        requires = {'mfussenegger/nvim-dap'},
+    })
 end)
