@@ -141,4 +141,17 @@ return packer.startup(function()
         config = "require('plugins.configs.dap_virtual')",
         requires = {'mfussenegger/nvim-dap'},
     })
+
+
+    ------
+    -- Under review
+    ------
+    use({
+        'Shatur/neovim-cmake',
+        config = "require('plugins.configs.cmake')"
+    })
+
+    use({
+        'ThePrimeagen/harpoon'
+    })
 end)
