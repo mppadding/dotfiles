@@ -121,4 +121,10 @@ return packer.startup(function()
     use({
         "rhysd/committia.vim"
     })
+    use({
+        'akinsho/bufferline.nvim',
+        tag = "v2.*",
+        after = "nvim-web-devicons",
+        config = "require('plugins.configs.bufferline')",
+    })
 end)
