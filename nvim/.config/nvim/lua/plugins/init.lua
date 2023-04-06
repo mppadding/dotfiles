@@ -56,6 +56,11 @@ return packer.startup(function()
         config = "require('plugins.configs.dashboard')",
     })
 
+    use({
+        'rafcamlet/nvim-luapad',
+        requires = 'antoinemadec/FixCursorHold.nvim'
+    })
+
     --[[
         LSP
     --]]
