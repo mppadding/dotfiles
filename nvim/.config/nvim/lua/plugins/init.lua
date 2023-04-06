@@ -35,10 +35,10 @@ return packer.startup(function()
         config = "require('plugins.configs.icons')",
     })
 
-    use({
-        "ellisonleao/gruvbox.nvim",
-        config = "require('plugins.configs.gruvbox')"
-    })
+    --use({
+    --    "ellisonleao/gruvbox.nvim",
+    --    config = "require('plugins.configs.gruvbox')"
+    --})
 
     use({
         "EdenEast/nightfox.nvim",
