@@ -34,5 +34,4 @@ require('nightfox').setup({
   groups = {},
 })
 
-
 vim.cmd("colorscheme nordfox")

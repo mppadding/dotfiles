@@ -4,8 +4,9 @@ M.telescope = function()
     local opts = { noremap = true, silent = true }
 
     -- Grep
-    vim.keymap.set("n", "<leader>gg", "<cmd>Telescope live_grep<CR>", opts)
-    vim.keymap.set("n", "<leader>gs", "<cmd>Telescope grep_string<CR>", opts)
+    vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", opts)
+    vim.keymap.set("n", "<leader>fs", "<cmd>Telescope grep_string<CR>", opts)
+    vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>", opts)
 
     -- LSP
     vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
