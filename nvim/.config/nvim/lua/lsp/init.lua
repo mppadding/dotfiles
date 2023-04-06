@@ -43,7 +43,8 @@ register_lsp(lsp.rust_analyzer)
 register_lsp(lsp.texlab)
 
 -- Lua
-register_lsp(lsp.sumneko_lua, require("lsp.sumneko"))
+-- FIX: sumneko is deprecated, use lua_ls
+--register_lsp(lsp.sumneko_lua, require("lsp.sumneko"))
 
 -- C/C++ with clang
 register_lsp(lsp.clangd)
