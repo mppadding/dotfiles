@@ -81,6 +81,14 @@ return packer.startup(function()
         "ms-jpq/coq.artifacts",
         branch = "artifacts",
     })
+    use({
+        "folke/trouble.nvim",
+        requires = "kyazdani42/nvim-web-devicons",
+        config = function()
+            require("trouble").setup {
+            }
+        end
+    })
 
     --[[
         Telescope
