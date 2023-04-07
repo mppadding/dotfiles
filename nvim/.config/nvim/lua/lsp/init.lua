@@ -37,7 +37,25 @@ register_lsp(lsp.pyright)
 register_lsp(lsp.cmake)
 
 -- Rust
-register_lsp(lsp.rust_analyzer)
+local rt = require("rust-tools")
+
+rt.setup({
+    tools = {
+        inlay_hints = {
+            highlight = "DiagnosticVirtualTextInfo",
+        },
+    },
+    server = require("coq").lsp_ensure_capabilities({
+        on_attach = function(_, bufnr)
+            on_attach_callback(nil, bufnr)
+
+            -- Hover actions
+            vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+            -- Code action groups
+            vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+        end,
+    }),
+})
 
 -- LaTeX
 register_lsp(lsp.texlab)
@@ -49,5 +67,8 @@ register_lsp(lsp.lua_ls, require("lsp.lua"))
 register_lsp(lsp.clangd)
 
 -- Start COQnow
+vim.g.coq_settings = {
+    ["limits.completion_auto_timeout"] = 0.66,
+}
 require("coq")().Now("-s")
 require("lsp.icons")

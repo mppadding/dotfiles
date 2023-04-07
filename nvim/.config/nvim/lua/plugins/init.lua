@@ -89,6 +89,9 @@ return packer.startup(function()
             }
         end
     })
+    use({
+        "simrat39/rust-tools.nvim"
+    })
 
     --[[
         Telescope
