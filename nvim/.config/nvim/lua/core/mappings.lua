@@ -1,4 +1,12 @@
+local mapper = require('helper.mapper')
+
 local M = {}
+
+M.generic = function()
+    local opts = { noremap = true, silent = true }
+
+    vim.keymap.set("n", "<leader>q", "<cmd>enew<bar>bd #<CR>", opts)
+end
 
 M.telescope = function()
     local opts = { noremap = true, silent = true }
@@ -16,7 +24,9 @@ M.telescope = function()
     vim.keymap.set("n", "<leader>Gc", "<cmd>Telescope git_commits<CR>", opts)
     vim.keymap.set("n", "<leader>Gs", "<cmd>Telescope git_status<CR>", opts)
 
+    -- Buffers/files
     vim.keymap.set("n", "<leader>b", "<cmd>Telescope buffers<CR>", opts)
+    vim.keymap.set("n", "<leader>fb", "<cmd>Telescope file_browser<CR>", opts)
 
     --[[
         builtin = {

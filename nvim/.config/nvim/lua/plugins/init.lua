@@ -46,8 +46,8 @@ return packer.startup(function()
     })
 
     use({
-        "famiu/feline.nvim",
-        after = "nvim-web-devicons",
+        "freddiehaddad/feline.nvim",
+        after = {"nvim-web-devicons"},
         config = "require('plugins.configs.feline')",
     })
 
@@ -91,6 +91,10 @@ return packer.startup(function()
     })
     use({
         "simrat39/rust-tools.nvim"
+    })
+    use({
+        "ckipp01/stylua-nvim",
+        run = "cargo install stylua"
     })
 
     --[[
@@ -139,7 +143,7 @@ return packer.startup(function()
     })
     use({
         'akinsho/bufferline.nvim',
-        tag = "v2.*",
+        tag = "*",
         after = "nvim-web-devicons",
         config = "require('plugins.configs.bufferline')",
     })
@@ -170,4 +174,30 @@ return packer.startup(function()
     use({
         'ThePrimeagen/harpoon'
     })
+   
+    -- Possession is a session management plugin
+    use({
+        'jedrzejboczar/possession.nvim',
+        requires = { 'nvim-lua/plenary.nvim' },
+        config = "require('plugins.configs.possession')",
+    }) 
+
+    use({
+        'folke/which-key.nvim',
+        config = "require('plugins.configs.which_key')",
+    })
+
+    use({
+        'nvim-telescope/telescope-file-browser.nvim',
+        requires = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' },
+        after = "telescope.nvim",
+        config = "require('telescope').load_extension('file_browser')"
+    })
+
+    use({
+        'lewis6991/gitsigns.nvim',
+        config = "require('plugins.configs.gitsigns')",
+    })
+
+
 end)
