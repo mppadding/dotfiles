@@ -11,7 +11,8 @@ mappings.tabs()
 mappings.debug()
 mappings.harpoon()
 
-require("plugins")
+require("core.plugin_manager")
+vim.cmd("colorscheme nordfox")
 
 -- Which-key doesnt seem to load automatically so we do this manually
 -- This might be an issue with Packer, or with which-key itself
