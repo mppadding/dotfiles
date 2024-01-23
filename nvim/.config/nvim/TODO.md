@@ -36,3 +36,11 @@ Remove rendering of nezuko when new file is opened
 
 # UI
 - Extend airline bar to include more of the path of the file instead of just the file name.
+
+
+# Rewrite of lazy
+- Add keybind for `:Trouble`
+
+
+- 30/10/2023 Add menu popup via telescope or something for quick actions with LSP (example, rust might generate 100 quick actions to generate trait impl's)
+- 04/12/2023 Rustfmt very slow sometimes, takes upwards of couple of seconds
