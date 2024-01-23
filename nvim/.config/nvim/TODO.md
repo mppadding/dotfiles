@@ -16,9 +16,6 @@
   then use them, or if we do not just use the default nvim remapping functions.
   This way we can define mappings anywhere we want, yet still have them show up in :Telescope mapper
 
-# Code generation
-- Generate switch statement from enum cases in C/C++
-
 # Search
 List of search results
 
@@ -31,3 +28,11 @@ Remove rendering of nezuko when new file is opened
 # Updates
 - vim.lsp.diagnostic.show_line_diagnostics is deprecated, use vim.diagnostic.open_float instead.
     - Mapped to <LEADER>dd
+
+# Fixes
+- Fix which-key getting loaded automatically instead of having to manually call `which-key.load()` in `init.lua`
+    - Might have something to do with packer and lazy loading
+- PossessionSave gets an error when a terminal is open in a buffer
+
+# UI
+- Extend airline bar to include more of the path of the file instead of just the file name.

@@ -1,22 +1,50 @@
+local mapper = require('helper.mapper')
+
 local M = {}
 
-M.telescope = function()
+M.generic = function ()
+    local opts = { noremap = true, silent = true }
+
+    vim.keymap.set("n", "<leader>q", "<cmd>enew<bar>bd #<CR>", opts)
+
+    -- Terminal keybinds
+    vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", opts);
+    vim.keymap.set("t", "<C-w>h", "<C-\\><C-n><C-w>h", opts);
+    vim.keymap.set("t", "<C-w>j", "<C-\\><C-n><C-w>j", opts);
+    vim.keymap.set("t", "<C-w>k", "<C-\\><C-n><C-w>k", opts);
+    vim.keymap.set("t", "<C-w>l", "<C-\\><C-n><C-w>l", opts);
+    vim.keymap.set("t", "<C-w>s", "<C-\\><C-n><C-w>s", opts);
+    vim.keymap.set("t", "<C-w>v", "<C-\\><C-n><C-w>v", opts);
+
+    -- Autocommands to leave/enter terminal mode when terminal loses or gains focus
+    vim.cmd("autocmd BufWinEnter,WinEnter term://* startinsert")
+    vim.cmd("autocmd BufLeave term://* stopinsert")
+end
+
+M.telescope = function ()
     local opts = { noremap = true, silent = true }
 
     -- Grep
     vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", opts)
+    vim.keymap.set("n", "<leader>fgg", "<cmd>Telescope live_grep<CR>", opts)
+    vim.keymap.set("n", "<leader>fgb", "<cmd>lua require('telescope.builtin').live_grep({grep_open_files=true})<CR>",
+        opts)
     vim.keymap.set("n", "<leader>fs", "<cmd>Telescope grep_string<CR>", opts)
     vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>", opts)
 
     -- LSP
     vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
+    vim.keymap.set("n", "gs", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>", opts)
 
     -- Git
     vim.keymap.set("n", "<leader>Gb", "<cmd>Telescope git_branches<CR>", opts)
     vim.keymap.set("n", "<leader>Gc", "<cmd>Telescope git_commits<CR>", opts)
     vim.keymap.set("n", "<leader>Gs", "<cmd>Telescope git_status<CR>", opts)
+    vim.keymap.set("n", "<leader>GB", "<cmd>Gitsigns blame_line<CR>", opts)
 
+    -- Buffers/files
     vim.keymap.set("n", "<leader>b", "<cmd>Telescope buffers<CR>", opts)
+    vim.keymap.set("n", "<leader>fb", "<cmd>Telescope file_browser<CR>", opts)
 
     --[[
         builtin = {
@@ -28,7 +56,7 @@ M.telescope = function()
         --]]
 end
 
-M.lsp = function(bufnr)
+M.lsp = function (bufnr)
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
@@ -39,6 +67,8 @@ M.lsp = function(bufnr)
     -- Jumping
     buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
     buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+    buf_set_keymap("n", "gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+
     -- Handled by Telescope
     -- buf_set_keymap('n', keybinds.lsp.goto_references, '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 
@@ -63,14 +93,16 @@ M.lsp = function(bufnr)
 
     -- Code Actions
     buf_set_keymap("n", "<leader>C", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-    buf_set_keymap("n", "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+    buf_set_keymap("n", "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<CR><cmd>writeall<CR>", opts)
+    -- TODO: Map <leader>cR to rename with empty input
+    --buf_set_keymap("n", "<leader>cr", function () return ":IncRename " .. vim.fn.expand("<cword>") end, opts)
 end
 
-M.syntax_tree_surfer = function()
+M.syntax_tree_surfer = function ()
     local stf = require("syntax-tree-surfer")
     local opts = { noremap = true, silent = true }
 
-    vim.keymap.set("n", "gj", function()
+    vim.keymap.set("n", "gj", function ()
         stf.targeted_jump({
             "function",
             "if_statement",
@@ -89,7 +121,7 @@ M.syntax_tree_surfer = function()
     -- vim.api.nvim_set_hl(0, 'Cursor', { fg = "#ff0000" })
 end
 
-M.tabs = function()
+M.tabs = function ()
     local opts = { noremap = true, silent = true }
 
     -- Navigation
@@ -102,7 +134,7 @@ M.tabs = function()
     vim.keymap.set("t", "<A-h>", "<cmd>tabprevious<CR>", opts)
 end
 
-M.debug = function()
+M.debug = function ()
     local opts = { noremap = true, silent = true }
 
     -- Breakpoints
@@ -127,12 +159,49 @@ M.debug = function()
     vim.keymap.set("n", "<leader>dq", "<cmd>lua require'dap'.terminate()<CR>", opts)
 end
 
-M.harpoon = function()
+M.harpoon = function ()
     local opts = { noremap = true, silent = true }
 
     -- Breakpoints
     vim.keymap.set("n", "<leader>mm", "<cmd>lua require('harpoon.mark').add_file()<CR>", opts)
     vim.keymap.set("n", "<leader>ml", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", opts)
+end
+
+M.toggleterm = function ()
+    local opts = { noremap = true, silent = true }
+
+    vim.keymap.set('n', '<leader>r', '<cmd>ToggleTerm<CR>', opts)
+    vim.keymap.set('n', '<leader>rl', '<cmd>TermExec cmd="cargo clippy"<CR>', opts)
+    vim.keymap.set('n', '<leader>rg', '<cmd>TermExec cmd="lazygit && exit"<CR>', opts)
+end
+
+
+M.possession = function ()
+    local opts = { noremap = true, silent = true }
+
+    --local possession = require('nvim-possession')
+
+    --vim.keymap.set('n', '<leader>sl', possession.list, opts)
+    --vim.keymap.set('n', '<leader>sn', possession.new, opts)
+    --vim.keymap.set('n', '<leader>su', possession.update, opts)
+    --vim.keymap.set('n', '<leader>sd', possession.delete, opts)
+end
+
+M.nvim_tree = function ()
+    local opts = { noremap = true, silent = true }
+
+    local present, api = pcall(require, "nvim-tree.api")
+
+    if not present then
+        vim.api.nvim_err_writeln(
+            "mappings.nvim_tree: nvim-tree not installed or function called before nvim-tree has loaded")
+        return
+    end
+
+    vim.keymap.set('n', '<leader>t', api.tree.toggle, opts)
+    vim.keymap.set('n', '<leader>to', api.tree.open, opts)
+    vim.keymap.set('n', '<leader>tc', api.tree.close, opts)
+    vim.keymap.set('n', '<leader>tf', api.tree.focus, opts)
 end
 
 return M

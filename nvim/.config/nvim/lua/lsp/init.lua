@@ -38,6 +38,7 @@ register_lsp(lsp.cmake)
 
 -- Rust
 local rt = require("rust-tools")
+vim.g.rustfmt_autosave = 1
 
 rt.setup({
     tools = {
@@ -61,7 +62,7 @@ rt.setup({
 register_lsp(lsp.texlab)
 
 -- Lua
-register_lsp(lsp.lua_ls, require("lsp.lua"))
+register_lsp(lsp.lua_ls, require("lsp.lang.lua"))
 
 -- C/C++ with clang
 register_lsp(lsp.clangd)
