@@ -1,14 +1,19 @@
 local M = {}
 
 local plugins = {
-    "plugins.core",
-    "plugins.colorscheme",
-    "plugins.treesitter",
-    "plugins.telescope",
-    "plugins.dap",
+    'plugins.core',
+    'plugins.editor',
+    'plugins.misc',
+    'plugins.git',
+    'plugins.ui',
+    'plugins.colorscheme',
+    'plugins.treesitter',
+    'plugins.telescope',
+    'plugins.lsp',
+    'plugins.dap',
 }
 
-for k,v in pairs(plugins) do
+for _, v in pairs(plugins) do
     vim.list_extend(M, require(v))
 end
 
@@ -33,30 +38,11 @@ return M
 --        config = "require('plugins.configs.dashboard')",
 --    })
 --
---    use({
---        'rafcamlet/nvim-luapad',
---        requires = 'antoinemadec/FixCursorHold.nvim'
---    })
---
 --    --[[
 --        LSP
 --    --]]
 --    use({
---        "neovim/nvim-lspconfig",
---    })
---    use({
 --        "jose-elias-alvarez/null-ls.nvim",
---    })
---    use({
---        "ms-jpq/coq_nvim",
---        after = "nvim-lspconfig",
---        branch = "coq",
---        run = ":COQdeps",
---        config = "require('lsp')",
---    })
---    use({
---        "ms-jpq/coq.artifacts",
---        branch = "artifacts",
 --    })
 --    use({
 --        "folke/trouble.nvim",
@@ -67,17 +53,7 @@ return M
 --        end
 --    })
 --    use({
---        "simrat39/rust-tools.nvim"
---    })
---    use({
---        "ckipp01/stylua-nvim",
---        run = "cargo install stylua"
---    })
---    use({
 --        "ziontee113/syntax-tree-surfer"
---    })
---    use({
---        "rhysd/committia.vim"
 --    })
 --    use({
 --        'akinsho/bufferline.nvim',
@@ -92,24 +68,12 @@ return M
 --    use({
 --        'ThePrimeagen/harpoon'
 --    })
---   
+--
 --    -- Possession is a session management plugin
 --    use({
 --        'jedrzejboczar/possession.nvim',
 --        requires = { 'nvim-lua/plenary.nvim' },
 --        config = "require('plugins.configs.possession')",
---    }) 
---
---    use({
---        'folke/which-key.nvim',
---        config = "require('plugins.configs.which_key')",
---    })
---
---    use({
---        'nvim-telescope/telescope-file-browser.nvim',
---        requires = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' },
---        after = "telescope.nvim",
---        config = "require('telescope').load_extension('file_browser')"
 --    })
 --
 --    use({

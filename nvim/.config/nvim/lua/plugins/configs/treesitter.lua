@@ -1,5 +1,7 @@
 require("nvim-treesitter.configs").setup({
-    ensure_installed = { "c", "cmake", "cpp", "latex", "lua", "python", "query", "rust" },
+    ensure_installed = { "c", "cpp", "lua", "python", "query", "rust" },
+
+    auto_install = true,
 
     -- Hightlighting Module
     highlight = {
@@ -11,7 +13,7 @@ require("nvim-treesitter.configs").setup({
     playground = {
         enable = true,
         disable = {},
-        updatetime = 25, -- Debounced time for highlighting nodes in the playground from the source code
+        updatetime = 25,         -- Debounced time for highlighting nodes in the playground from the source code
         persist_queries = false, -- Whether the query persists across vim sessions
         keybindings = {
             toggle_query_editor = "o",

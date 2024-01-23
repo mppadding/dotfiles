@@ -1,45 +1,12 @@
-function config_dap()
+local function config_dap()
     local dap = require('dap')
-    dap.adapters.lldb = {
-        type = 'executable',
-        command = '/usr/bin/lldb-vscode', -- adjust as needed, must be absolute path
-        name = 'lldb'
-    }
-
-    dap.configurations.cpp = {
-    {
-        name = 'Launch',
-        type = 'lldb',
-        request = 'launch',
-        program = function()
-        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-        end,
-        cwd = '${workspaceFolder}',
-        stopOnEntry = false,
-        args = {},
-        preRunCommands = {"breakpoint set -n main"},
-        runInTerminal = false,
-
-        -- 💀
-        -- if you change `runInTerminal` to true, you might need to change the yama/ptrace_scope setting:
-        --
-        --    echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
-        --
-        -- Otherwise you might get the following error:
-        --
-        --    Error on launch: Failed to attach to the target process
-        --
-        -- But you should be aware of the implications:
-        -- https://www.kernel.org/doc/html/latest/admin-guide/LSM/Yama.html
-        -- runInTerminal = false,
-    },
-    }
-
-    dap.configurations.c = dap.configurations.cpp
-    dap.configurations.rust = dap.configurations.cpp
 end
 
-function config_dap_virtual()
+local function config_dap_ui()
+    require('plugins.dap.ui')()
+end
+
+local function config_dap_virtual()
     require("nvim-dap-virtual-text").setup {
         enabled = true,                        -- enable this plugin (the default)
         enabled_commands = true,               -- create commands DapVirtualTextEnable, DapVirtualTextDisable, DapVirtualTextToggle, (DapVirtualTextForceRefresh for refreshing when debug adapter did not notify its termination)
@@ -55,12 +22,12 @@ function config_dap_virtual()
         all_frames = false,                    -- show virtual text for all stack frames not only current. Only works for debugpy on my machine.
         virt_lines = false,                    -- show virtual lines instead of virtual text (will flicker!)
         virt_text_win_col = nil                -- position the virtual text at a fixed window column (starting from the first text column) ,
-                                            -- e.g. 80 to position at column 80, see `:h nvim_buf_set_extmark()`
+        -- e.g. 80 to position at column 80, see `:h nvim_buf_set_extmark()`
     }
 end
 
 return {
-    { 'mfussenegger/nvim-dap', config = config_dap },
-    { 'rcarriga/nvim-dap-ui', config = 'require("plugins.dap.ui")' },
+    { 'mfussenegger/nvim-dap',           config = config_dap },
+    { 'rcarriga/nvim-dap-ui',            config = config_dap_ui },
     { 'theHamsta/nvim-dap-virtual-text', config = config_dap_virtual },
 }
