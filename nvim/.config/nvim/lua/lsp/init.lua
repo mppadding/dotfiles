@@ -1,12 +1,12 @@
 local mappings = require("core.mappings")
 
-local on_attach_callback = function(client, bufnr)
+local on_attach_callback = function (client, bufnr)
     mappings.lsp(bufnr)
 end
 
 -- Define custom gutter signs for LSP tags
 
-local register_lsp = function(server, settings)
+local register_lsp = function (server, settings)
     local lsp_settings = require("coq")().lsp_ensure_capabilities({
         on_attach = on_attach_callback,
     })
@@ -47,7 +47,7 @@ rt.setup({
         },
     },
     server = require("coq").lsp_ensure_capabilities({
-        on_attach = function(_, bufnr)
+        on_attach = function (_, bufnr)
             on_attach_callback(nil, bufnr)
 
             -- Hover actions

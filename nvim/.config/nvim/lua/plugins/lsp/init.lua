@@ -1,6 +1,16 @@
 local function config_mason_lspconfig()
     require('mason-lspconfig').setup({
-        ensure_installed = { 'rust_analyzer@2023-08-28', 'lua_ls', 'yamlls', 'tsserver' },
+        ensure_installed = {
+            'rust_analyzer',
+            'lua_ls',
+            'yamlls',
+            -- Typescript/React
+            'tsserver',
+            'eslint',
+            -- IaC
+            'helm_ls',
+            'terraformls'
+        },
     })
 end
 
@@ -44,6 +54,7 @@ local function config_nvim_cmp()
             end, { 'i', 's' }),
         }),
         sources = cmp.config.sources({
+            --{ name = 'copilot' },
             { name = 'nvim_lsp' },
             { name = 'nvim_lsp_signature_help' },
             { name = 'nvim_lua' },
@@ -52,6 +63,9 @@ local function config_nvim_cmp()
         }, {
             { name = 'buffer', keyword_length = 3 },
         }),
+        experimental = {
+            ghost_text = true,
+        },
     })
 
     vim.fn.sign_define("DiagnosticSignError",
@@ -66,6 +80,7 @@ local function config_nvim_cmp()
     local on_attach_cb = function (client, buf)
         require('lsp-format').on_attach(client, buf)
         require('core.mappings').lsp(buf)
+        vim.lsp.inlay_hint.enable()
     end
 
     local servers = require('plugins.lsp.servers')
@@ -74,6 +89,14 @@ local function config_nvim_cmp()
     for _, v in pairs(servers.servers) do
         require(servers.root .. v).setup(capabilities, on_attach_cb)
     end
+end
+
+
+local function config_copilot()
+    require('copilot').setup({
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+    })
 end
 
 return {
@@ -95,9 +118,10 @@ return {
     { 'mustache/vim-mustache-handlebars' },
     { 'williamboman/mason.nvim',           config = true },
     { 'williamboman/mason-lspconfig.nvim', config = config_mason_lspconfig },
+    { 'towolf/vim-helm',                   ft = { 'helm' } }, -- Sets the filetype to helm
+    --{ 'zbirenbaum/copilot.lua',            cmd = 'Copilot',                             event = 'InsertEnter', config = config_copilot },
+    --{ 'zbirenbaum/copilot-cmp',            dependencies = { 'zbirenbaum/copilot.lua' }, config = true },
     -- Servers
-    -- DEPRECATED: Since july 2023
-    --{ 'simrat39/rust-tools.nvim' },
-    { 'mrcjkb/rustaceanvim',               version = '^3',                 ft = { 'rust' } },
+    { 'mrcjkb/rustaceanvim',               ft = { 'rust' } },
     { 'pmizio/typescript-tools.nvim' },
 }

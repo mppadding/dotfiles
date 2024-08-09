@@ -28,6 +28,6 @@ end
 
 return {
     { 'mfussenegger/nvim-dap',           config = config_dap },
-    { 'rcarriga/nvim-dap-ui',            config = config_dap_ui },
+    { 'rcarriga/nvim-dap-ui',            dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" }, config = config_dap_ui },
     { 'theHamsta/nvim-dap-virtual-text', config = config_dap_virtual },
 }

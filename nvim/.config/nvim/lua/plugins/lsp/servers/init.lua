@@ -6,6 +6,7 @@ return {
         'typescript',
         'terraform',
         'yaml',
-        "json",
+        'json',
+        'helm'
     }
 }

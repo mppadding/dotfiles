@@ -4,17 +4,18 @@ local M = {}
 
 M.generic = function ()
     local opts = { noremap = true, silent = true }
+    local ignore_opts = { noremap = true, silent = true, desc = "ignore" }
 
     vim.keymap.set("n", "<leader>q", "<cmd>enew<bar>bd #<CR>", opts)
 
     -- Terminal keybinds
-    vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", opts);
-    vim.keymap.set("t", "<C-w>h", "<C-\\><C-n><C-w>h", opts);
-    vim.keymap.set("t", "<C-w>j", "<C-\\><C-n><C-w>j", opts);
-    vim.keymap.set("t", "<C-w>k", "<C-\\><C-n><C-w>k", opts);
-    vim.keymap.set("t", "<C-w>l", "<C-\\><C-n><C-w>l", opts);
-    vim.keymap.set("t", "<C-w>s", "<C-\\><C-n><C-w>s", opts);
-    vim.keymap.set("t", "<C-w>v", "<C-\\><C-n><C-w>v", opts);
+    vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", ignore_opts);
+    vim.keymap.set("t", "<C-w>h", "<C-\\><C-n><C-w>h", ignore_opts);
+    vim.keymap.set("t", "<C-w>j", "<C-\\><C-n><C-w>j", ignore_opts);
+    vim.keymap.set("t", "<C-w>k", "<C-\\><C-n><C-w>k", ignore_opts);
+    vim.keymap.set("t", "<C-w>l", "<C-\\><C-n><C-w>l", ignore_opts);
+    vim.keymap.set("t", "<C-w>s", "<C-\\><C-n><C-w>s", ignore_opts);
+    vim.keymap.set("t", "<C-w>v", "<C-\\><C-n><C-w>v", ignore_opts);
 
     -- Autocommands to leave/enter terminal mode when terminal loses or gains focus
     vim.cmd("autocmd BufWinEnter,WinEnter term://* startinsert")
@@ -199,8 +200,6 @@ M.nvim_tree = function ()
     end
 
     vim.keymap.set('n', '<leader>t', api.tree.toggle, opts)
-    vim.keymap.set('n', '<leader>to', api.tree.open, opts)
-    vim.keymap.set('n', '<leader>tc', api.tree.close, opts)
     vim.keymap.set('n', '<leader>tf', api.tree.focus, opts)
 end
 

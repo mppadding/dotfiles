@@ -7,7 +7,7 @@ M.setup = function (capabilities, on_attach_cb)
         server = {
             capabilities = capabilities,
             on_attach = on_attach_cb,
-        },
+        }
     }
 end
 

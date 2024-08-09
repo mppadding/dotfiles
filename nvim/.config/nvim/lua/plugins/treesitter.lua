@@ -2,7 +2,7 @@ local function config_treesitter()
     local configs = require('nvim-treesitter.configs')
 
     configs.setup({
-        ensure_installed = { 'lua', 'rust', 'toml', 'markdown', 'html', 'css', 'javascript' },
+        ensure_installed = { 'lua', 'rust', 'toml', 'markdown', 'html', 'css', 'javascript', 'query' },
         highlight = {
             enable = true,
         }
@@ -14,6 +14,5 @@ local function config_treesitter()
 end
 
 return {
-    { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate',       config = config_treesitter },
-    { 'nvim-treesitter/playground',      cmd = 'TSPlaygroundToggle' }
+    { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate', config = config_treesitter },
 }

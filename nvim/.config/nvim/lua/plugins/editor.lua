@@ -1,7 +1,23 @@
+local opts_conform = {
+    formatters_by_ft = {
+        javascript = { "prettier" },
+        javascriptreact = { "prettier" },
+        typescript = { "prettier" },
+        typescriptreact = { "prettier" },
+    },
+    default_format_opts = {
+        lsp_format = "fallback",
+    },
+    format_on_save = { timeout_ms = 500 }
+}
+
 return {
+    { 'github/copilot.vim' },
     { 'danilamihailov/beacon.nvim' },
     { 'lukas-reineke/indent-blankline.nvim' },
-    { 'folke/todo-comments.nvim' },
+    { 'AckslD/nvim-neoclip.lua',            dependencies = { 'nvim-telescope/telescope.nvim' }, opts = {} },
+    { 'folke/todo-comments.nvim',           dependencies = { 'nvim-lua/plenary.nvim' },         opts = { highlight = { pattern = [[.*<(KEYWORDS)(\(.*\))?\s*:]] }, search = { pattern = [[\b(KEYWORDS)(\(.*\))?:]] } } },
+    { 'stevearc/conform.nvim',              event = { 'BufWritePre' },                          cmd = { 'ConformInfo' },                                                                                               opts = opts_conform },
     {
         'folke/flash.nvim',
         event = "VeryLazy",

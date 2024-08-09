@@ -1,9 +1,17 @@
 vim.g.mapleader = " "
+vim.g.editorconfig = true
 -- TODO: Benchmark
 -- vim.loader.enable()
 
+require("compat")
+
 P = function (t)
     vim.print(t)
+    return t
+end
+
+dump = function (t)
+    vim.print(vim.inspect(t))
     return t
 end
 
@@ -22,8 +30,3 @@ require("core.plugin_manager")
 vim.cmd("colorscheme nordfox")
 
 mappings.nvim_tree()
-
--- Which-key doesnt seem to load automatically so we do this manually
--- This might be an issue with Packer, or with which-key itself
--- We force a load here
-require("which-key").load()
