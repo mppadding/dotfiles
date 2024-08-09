@@ -47,6 +47,10 @@ M.telescope = function ()
     vim.keymap.set("n", "<leader>b", "<cmd>Telescope buffers<CR>", opts)
     vim.keymap.set("n", "<leader>fb", "<cmd>Telescope file_browser<CR>", opts)
 
+    -- Macros
+    vim.keymap.set("n", "<leader>tm", "<cmd>Telescope macroscope<CR>", opts)
+    vim.keymap.set("n", "<leader>tc", "<cmd>Telescope neoclip<CR>", opts)
+
     --[[
         builtin = {
             find_files = "<leader>ff",
