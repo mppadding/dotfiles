@@ -1,7 +1,7 @@
 local M = {}
 
 M.setup = function (capabilities, on_attach_cb)
-    vim.g.rustfmt_autosave = 1
+    vim.g.rustfmt_autosave = 0
 
     vim.g.rustaceanvim = {
         server = {

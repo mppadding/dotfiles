@@ -9,7 +9,7 @@ M.setup = function (capabilities, on_attach_cb)
         settings = {
             yaml = {
                 schemas = {
-                    ["lambik/schema.json"] = "lambik/*.yaml",
+                    ["lambik/schema.json"] = "lambik/**/*.yaml",
                     ["engine/features/schema.json"] = "engine/features/**/*.yaml",
                     ["server/features/schema.json"] = "server/features/**/*.yaml",
                 }

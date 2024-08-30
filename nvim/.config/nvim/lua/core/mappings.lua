@@ -42,6 +42,7 @@ M.telescope = function ()
     vim.keymap.set("n", "<leader>Gc", "<cmd>Telescope git_commits<CR>", opts)
     vim.keymap.set("n", "<leader>Gs", "<cmd>Telescope git_status<CR>", opts)
     vim.keymap.set("n", "<leader>GB", "<cmd>Gitsigns blame_line<CR>", opts)
+    vim.keymap.set("n", "<leader>Ga", "<cmd>!git add %<CR><CR>", opts)
 
     -- Buffers/files
     vim.keymap.set("n", "<leader>b", "<cmd>Telescope buffers<CR>", opts)

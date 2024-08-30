@@ -1,5 +1,6 @@
 local opts_conform = {
     formatters_by_ft = {
+        rust = { "rustfmt", lsp_format = "fallback" },
         javascript = { "prettier" },
         javascriptreact = { "prettier" },
         typescript = { "prettier" },
