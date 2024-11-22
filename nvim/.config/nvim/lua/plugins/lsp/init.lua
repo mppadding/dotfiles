@@ -5,7 +5,7 @@ local function config_mason_lspconfig()
             'lua_ls',
             'yamlls',
             -- Typescript/React
-            'tsserver',
+            'ts_ls',
             'eslint',
             -- IaC
             'helm_ls',
