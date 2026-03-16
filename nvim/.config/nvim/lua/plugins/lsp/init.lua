@@ -1,15 +1,19 @@
 local function config_mason_lspconfig()
     require('mason-lspconfig').setup({
+        automatic_enable = {
+            exclude = { 'rust_analyzer' },
+        },
         ensure_installed = {
-            'rust_analyzer',
             'lua_ls',
             'yamlls',
             -- Typescript/React
-            'ts_ls',
+            --'ts_ls',
             'eslint',
+            'rust_analyzer',
             -- IaC
             'helm_ls',
-            'terraformls'
+            'terraformls',
+            'pyright'
         },
     })
 end
@@ -122,6 +126,6 @@ return {
     --{ 'zbirenbaum/copilot.lua',            cmd = 'Copilot',                             event = 'InsertEnter', config = config_copilot },
     --{ 'zbirenbaum/copilot-cmp',            dependencies = { 'zbirenbaum/copilot.lua' }, config = true },
     -- Servers
-    { 'mrcjkb/rustaceanvim',               ft = { 'rust' } },
+    { 'mrcjkb/rustaceanvim',               version = '^6',                 lazy = false },
     { 'pmizio/typescript-tools.nvim' },
 }

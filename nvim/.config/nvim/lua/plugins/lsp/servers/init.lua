@@ -7,6 +7,9 @@ return {
         'terraform',
         'yaml',
         'json',
-        'helm'
+        'helm',
+        'css',
+        'python',
+        'tilt'
     }
 }

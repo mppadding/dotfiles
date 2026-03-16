@@ -84,8 +84,8 @@ M.lsp = function (bufnr)
 
     -- Diagnostics
     buf_set_keymap("n", "<leader>ld", "<cmd>lua vim.diagnostic.open_float(0, {scope = 'line'})<CR>", opts)
-    buf_set_keymap("n", "<leader>lN", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
-    buf_set_keymap("n", "<leader>ln", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+    buf_set_keymap("n", "<leader>lN", "<cmd>lua vim.diagnostic.jump({count=-1, float=true})<CR>", opts)
+    buf_set_keymap("n", "<leader>ln", "<cmd>lua vim.diagnostic.jump({count=1, float=true})<CR>", opts)
     buf_set_keymap("n", "<leader>ll", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 
     -- Not implemented by clangd

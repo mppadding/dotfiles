@@ -12,14 +12,10 @@ local function setup_typescript(capabilities, on_attach_cb)
 end
 
 local function setup_eslint(capabilities, on_attach_cb)
-    local eslint = require('lspconfig').eslint
-
-    local opts = {
+    vim.lsp.config('eslint', {
         capabilities = capabilities,
         on_attach = on_attach_cb,
-    }
-
-    eslint.setup(opts)
+    })
 end
 
 M.setup = function (capabilities, on_attach_cb)

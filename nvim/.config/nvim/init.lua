@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 vim.g.editorconfig = true
 -- TODO: Benchmark
 -- vim.loader.enable()

@@ -1,4 +1,4 @@
-local reloader = function()
+local reloader = function ()
     RELOAD "plenary"
     RELOAD "popup"
     RELOAD "telescope"
@@ -46,11 +46,37 @@ function M.edit_neovim()
         },
     }
 
+
     require("telescope.builtin").find_files(opts_with_preview)
 end
 
+-- Custom command runner
+function M.command_runner()
+    local opts_with_preview = {
+        follow = true,
+        prompt_title = "~ NeoVim dotfiles ~",
+        shorten_path = false,
+        cwd = "~/dotfiles/nvim/.config/nvim",
+
+        layout_strategy = "flex",
+        layout_config = {
+            width = 0.9,
+            height = 0.8,
+
+            horizontal = {
+                width = { padding = 0.15 },
+            },
+            vertical = {
+                preview_height = 0.75,
+            },
+        },
+    }
+
+    require("telescope.command_picker")(opts_with_preview)
+end
+
 return setmetatable({}, {
-    __index = function(_, k)
+    __index = function (_, k)
         reloader()
 
         if M[k] then

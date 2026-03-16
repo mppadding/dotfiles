@@ -1,9 +1,7 @@
 local M = {}
 
 M.setup = function (capabilities, on_attach_cb)
-    local tf = require('lspconfig')['jsonls']
-
-    local opts = {
+    vim.lsp.config['jsonls'] = {
         capabilities = capabilities,
         on_attach = on_attach_cb,
         settings = {
@@ -17,8 +15,6 @@ M.setup = function (capabilities, on_attach_cb)
             }
         }
     }
-
-    tf.setup(opts)
 end
 
 return M

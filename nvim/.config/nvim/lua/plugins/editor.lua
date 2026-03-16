@@ -16,9 +16,14 @@ return {
     { 'github/copilot.vim' },
     { 'danilamihailov/beacon.nvim' },
     { 'lukas-reineke/indent-blankline.nvim' },
-    { 'AckslD/nvim-neoclip.lua',            dependencies = { 'nvim-telescope/telescope.nvim' }, opts = {} },
-    { 'folke/todo-comments.nvim',           dependencies = { 'nvim-lua/plenary.nvim' },         opts = { highlight = { pattern = [[.*<(KEYWORDS)(\(.*\))?\s*:]] }, search = { pattern = [[\b(KEYWORDS)(\(.*\))?:]] } } },
-    { 'stevearc/conform.nvim',              event = { 'BufWritePre' },                          cmd = { 'ConformInfo' },                                                                                               opts = opts_conform },
+    { 'AckslD/nvim-neoclip.lua',                   dependencies = { 'nvim-telescope/telescope.nvim' },                                  opts = {} },
+    { 'folke/todo-comments.nvim',                  dependencies = { 'nvim-lua/plenary.nvim' },                                          opts = { highlight = { pattern = [[.*<(KEYWORDS)(\(.*\))?\s*:]] }, search = { pattern = [[\b(KEYWORDS)(\(.*\))?:]] } } },
+    { 'stevearc/conform.nvim',                     event = { 'BufWritePre' },                                                           cmd = { 'ConformInfo' },                                                                                               opts = opts_conform },
+
+    -- Plugin to render markdown (https://github.com/MeanderingProgrammer/render-markdown.nvim)
+    { 'MeanderingProgrammer/render-markdown.nvim', dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, opts = {} },
+
+    { 'MagicDuck/grug-far.nvim' },
     {
         'folke/flash.nvim',
         event = "VeryLazy",

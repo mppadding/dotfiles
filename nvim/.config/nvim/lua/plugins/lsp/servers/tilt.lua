@@ -1,0 +1,11 @@
+local M = {}
+
+M.setup = function (capabilities, on_attach_cb)
+    vim.lsp.config('tilt_ls', {
+        capabilities = capabilities,
+        on_attach = on_attach_cb,
+    })
+    vim.lsp.enable('tilt_ls')
+end
+
+return M

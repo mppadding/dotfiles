@@ -1,7 +1,7 @@
 local M = {}
 
 M.setup = function (capabilities, on_attach_cb)
-    require("lspconfig")["lua_ls"].setup({
+    vim.lsp.config['lua_ls'] = {
         capabilities = capabilities,
         on_attach = on_attach_cb,
         on_init = function (client)
@@ -24,13 +24,7 @@ M.setup = function (capabilities, on_attach_cb)
                         -- Make the server aware of Neovim runtime files
                         workspace = {
                             checkThirdParty = false,
-                            library = {
-                                vim.env.VIMRUNTIME
-                                -- "${3rd}/luv/library"
-                                -- "${3rd}/busted/library",
-                            }
-                            -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
-                            -- library = vim.api.nvim_get_runtime_file("", true)
+                            library = vim.api.nvim_get_runtime_file("", true)
                         },
                     }
                 })
@@ -39,7 +33,7 @@ M.setup = function (capabilities, on_attach_cb)
             end
             return true
         end,
-    })
+    }
 end
 
 return M
