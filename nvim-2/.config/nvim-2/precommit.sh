@@ -1,0 +1,2 @@
+luacheck .
+stylua . --check
