@@ -14,5 +14,5 @@ local function config_treesitter()
 end
 
 return {
-    { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate', config = config_treesitter },
+    --{ 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate', config = config_treesitter },
 }
