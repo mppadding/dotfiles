@@ -21,6 +21,10 @@
       "rev": "bac6317300e205335df425296570d84322730067",
       "src": "https://github.com/nvim-mini/mini.icons"
     },
+    "mini.indentscope": {
+      "rev": "d3f955f09b1a05d25d5a7740338fba2baaee41a3",
+      "src": "https://github.com/nvim-mini/mini.indentscope"
+    },
     "nightfox.nvim": {
       "rev": "ba47d4b4c5ec308718641ba7402c143836f35aa9",
       "src": "https://github.com/edeneast/nightfox.nvim"
