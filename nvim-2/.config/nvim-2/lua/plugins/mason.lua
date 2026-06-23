@@ -11,6 +11,7 @@ vim.defer_fn(function()
     ensure_installed = {
       'lua_ls',
       'jsonls',
+      'eslint',
       'terraformls',
       'tflint',
     },
