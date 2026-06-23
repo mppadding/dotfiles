@@ -34,5 +34,8 @@ vim.opt.undofile = true  -- Make undo persistent
 vim.opt.termguicolors = true -- Use TrueColors
 vim.opt.cursorline = true    -- Highlight current line
 
---vim.cmd('set colorcolumn=120') 		-- Set color highlight on column 120
+-- Folding
+vim.opt.foldlevelstart = 99
+
+vim.opt.colorcolumn = '99'
 -- stylua: ignore end
