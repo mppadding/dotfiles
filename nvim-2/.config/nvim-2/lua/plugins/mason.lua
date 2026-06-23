@@ -10,6 +10,7 @@ vim.defer_fn(function()
   require('mason-lspconfig').setup({
     ensure_installed = {
       'lua_ls',
+      'jsonls',
       'terraformls',
       'tflint',
     },
