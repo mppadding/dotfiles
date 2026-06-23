@@ -3,10 +3,14 @@ vim.pack.add({
   'https://github.com/mason-org/mason-lspconfig.nvim',
 })
 
-require('mason').setup()
-require('mason-lspconfig').setup({
-  ensure_installed = {
-    'lua_ls',
-  },
-  automatic_enable = false,
-})
+-- Defer it because it takes a while to load and we don't need it immediately
+-- 99.9% of the time, the LSPs are already installed.
+vim.defer_fn(function()
+  require('mason').setup()
+  require('mason-lspconfig').setup({
+    ensure_installed = {
+      'lua_ls',
+    },
+    automatic_enable = false,
+  })
+end, 100)
