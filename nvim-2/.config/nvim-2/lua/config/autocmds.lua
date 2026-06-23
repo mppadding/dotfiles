@@ -1,7 +1,3 @@
--- Autocommands to leave/enter terminal mode when terminal loses or gains focus
-vim.cmd('autocmd BufWinEnter,WinEnter term://* startinsert')
-vim.cmd('autocmd BufLeave term://* stopinsert')
-
 -- LSP
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('my.lsp', {}),
