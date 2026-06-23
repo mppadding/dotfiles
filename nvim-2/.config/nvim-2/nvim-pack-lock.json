@@ -5,6 +5,10 @@
       "src": "https://github.com/saghen/blink.cmp",
       "version": "1.0.0 - 2.0.0"
     },
+    "fzf-lua": {
+      "rev": "beaa4e83e6be4174af291a464e4f49548c943963",
+      "src": "https://github.com/ibhagwan/fzf-lua"
+    },
     "mason-lspconfig.nvim": {
       "rev": "0a3b42c3e503df87aef6d6513e13148381495c3a",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"
