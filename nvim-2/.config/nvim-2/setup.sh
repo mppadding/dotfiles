@@ -1,3 +1,3 @@
-brew install luarocks
+brew install luacheck
 
-luarocks install luacheck
+cargo install --locked tree-sitter-cli
