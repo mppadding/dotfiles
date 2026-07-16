@@ -21,31 +21,3 @@ vim.keymap.set('t', '<A-l>', '<cmd>tabnext<CR>', opts)
 vim.keymap.set('n', '<A-h>', '<cmd>tabprevious<CR>', { desc = 'Previous tab' })
 vim.keymap.set('i', '<A-h>', '<cmd>tabprevious<CR>', opts)
 vim.keymap.set('t', '<A-h>', '<cmd>tabprevious<CR>', opts)
-
--- LSP
---vim.keymap.set('i', '<Tab>', function()
---  -- Go to next suggestion if autocomplete window is open
---  if vim.fn.pumvisible() == 1 then
---    return '<C-n>'
---  end
-
---  return '<Tab>'
---end, { expr = true })
-
---vim.keymap.set('i', '<S-Tab>', function()
---  -- Go to previous suggestion if autocomplete window is open
---  if vim.fn.pumvisible() == 1 then
---    return '<C-p>'
---  end
-
---  return '<S-Tab>'
---end, { expr = true })
-
---vim.keymap.set('i', '<CR>', function()
---  -- Complete & close the autocomplete window
---  if vim.fn.pumvisible() == 1 then
---    return '<C-y>'
---  end
-
---  return '<CR>'
---end, { expr = true })

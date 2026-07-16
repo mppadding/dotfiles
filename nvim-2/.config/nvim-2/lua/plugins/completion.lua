@@ -18,7 +18,7 @@ vim.api.nvim_create_autocmd('InsertEnter', {
       --keymap = { preset = 'super-tab' },
       keymap = {
         preset = 'none',
-        ['<CR>'] = { 'accept', 'fallback' },
+        ['<CR>'] = { 'select_and_accept', 'fallback' },
         ['<C-k>'] = { 'scroll_documentation_up', 'fallback' },
         ['<C-j>'] = { 'scroll_documentation_down', 'fallback' },
         ['<Tab>'] = {
@@ -47,8 +47,10 @@ vim.api.nvim_create_autocmd('InsertEnter', {
         use_nvim_cmp_as_default = true,
       },
       completion = {
+        ghost_text = { enabled = true },
         documentation = { auto_show = true },
       },
+      signature = { enabled = true },
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
       },
