@@ -14,6 +14,7 @@ vim.defer_fn(function()
       'eslint',
       'terraformls',
       'tflint',
+      'gopls',
     },
     automatic_enable = false,
   })

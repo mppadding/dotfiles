@@ -6,4 +6,6 @@ vim.lsp.enable({
   'tflint',
   -- javascript/typescript
   'eslint',
+  -- go
+  'gopls',
 })

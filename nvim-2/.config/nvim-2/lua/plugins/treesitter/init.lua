@@ -3,7 +3,7 @@ vim.pack.add({
 })
 
 -- replicate `ensure_installed`, runs asynchronously, skips existing languages
-require('nvim-treesitter').install({ 'lua', 'rust', 'markdown', 'markdown_inline', 'terraform', 'hcl', 'yaml' })
+require('nvim-treesitter').install({ 'lua', 'rust', 'go', 'markdown', 'markdown_inline', 'terraform', 'hcl', 'yaml' })
 
 local lang_setup = require('plugins.treesitter.languages')
 
