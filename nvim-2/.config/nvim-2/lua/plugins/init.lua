@@ -2,6 +2,7 @@ vim.pack.add({})
 
 require('plugins.ui.colorscheme')
 require('plugins.treesitter')
+require('plugins.lsp.rustacean')
 require('plugins.completion')
 require('plugins.fzf')
 require('plugins.mason')
