@@ -1,3 +1,7 @@
+vim.api.nvim_create_user_command('ProximitySearch', function()
+  require('commands/proximity-search').start()
+end, { desc = 'Search for multiple patterns within N lines of each other (snacks)' })
+
 -- Plugins
 vim.api.nvim_create_user_command('PlugUpdate', function(args)
     print(vim.inspect(args.fargs))
